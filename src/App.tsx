@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import './App.css';
 import {TaskType, Todolist} from "./Todolist";
-import {renderIntoDocument} from "react-dom/test-utils";
+
 
 export type FilterValuesType = 'all' | 'completed' | 'active';
 
-function App() {
+export const App=() => {
     let [tasks, setTasks] = useState< Array<TaskType>>([
         {id: 1, title: "HTML&CSS", isDone: true},
         {id: 2, title: "JS", isDone: true},
@@ -15,12 +15,7 @@ function App() {
         {id: 6, title: "RTK query", isDone: false}
     ])
     let [filter, setFilter] = useState<FilterValuesType>('all')
-
-    // let tasks2 = [
-    //     {id: 1, title: "HTML", isDone: true},
-    //     {id: 2, title: "Node", isDone: false},
-    //     {id: 3, title: "JSX", isDone: true}
-    // ]
+    
 
 //TODO: учебный вариант работы  useState
     // let arr = useState(initTasks)
@@ -29,22 +24,24 @@ function App() {
 
 
 
-    function removeTask(id: number) {
+  const removeTask=(id: number) => {
         let filterTasks = tasks.filter( t => t.id !== id)
 setTasks(filterTasks)
     }
 
-   function changeFilter(value: FilterValuesType) {
+   const changeFilter=(value: FilterValuesType) => {
         setFilter(value)
    }
 
     let tasksForTodolist = tasks
     if (filter === 'completed'){
-        tasksForTodolist = tasks.filter(t => t.isDone === true)
+        tasksForTodolist = tasks.filter(t => t.isDone)
     }
     if (filter === 'active'){
-        tasksForTodolist = tasks.filter(t => t.isDone === false)
+        tasksForTodolist = tasks.filter(t => !t.isDone )
     }
+
+
 
   return (
     <div className="App">
@@ -52,8 +49,13 @@ setTasks(filterTasks)
                   tasks={tasksForTodolist}
                   removeTask={removeTask}
                   changeFilter={changeFilter}
-        />
-        {/*<Todolist title="Movies" tasks={tasks2}/>*/}
+                  date={"28.03.2025"}/>
+
+        <Todolist title="Books"
+                  tasks={[]}
+                  removeTask={removeTask}
+                  changeFilter={changeFilter}/>
+
     </div>
   );
 }
@@ -61,5 +63,3 @@ setTasks(filterTasks)
 
 
 
-
-export default App;
