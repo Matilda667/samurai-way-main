@@ -1,6 +1,6 @@
 import React from "react";
 import {FilterValuesType} from "./App";
-
+import {Button} from "./Button";
 
 
 export type TaskType = {
@@ -34,7 +34,7 @@ export const Todolist=({ title, tasks, removeTask,changeFilter,date }: PropsType
                     :tasks.map(t =><li key={t.id}>
                         <input type="checkbox" checked={t.isDone}/>
                             <span>{t.title}</span>
-                        <button onClick={ () => {removeTask(t.id)}} title={"x"}/>
+                        <Button onClick={ () => {removeTask(t.id)}} title={"x"}/>
 
                         </li>
                     )
@@ -43,9 +43,9 @@ export const Todolist=({ title, tasks, removeTask,changeFilter,date }: PropsType
             </ul>
 
             <div>
-                <button onClick={ () => {changeFilter('all')}} title={"All"}/>
-                <button onClick={ () => {changeFilter('active')}} title={"Active"}/>
-                <button onClick={ () => {changeFilter('completed')}} title={"Completed"}/>
+                <Button onClick={ () => {changeFilter('all')}} title={"All"}/>
+                <Button onClick={ () => {changeFilter('active')}} title={"Active"}/>
+                <Button onClick={ () => {changeFilter('completed')}} title={"Completed"}/>
                 <div>{date}</div>
             </div>
         </div>
