@@ -54,8 +54,8 @@ setTasks(filterTasks)
         <Todolist title="Books"
                   tasks={[]}
                   removeTask={removeTask}
-                  changeFilter={changeFilter}/>
-
+                  changeFilter={changeFilter}
+        date={"28.03.2025"}/>
     </div>
   );
 }
