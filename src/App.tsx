@@ -14,7 +14,7 @@ export const App=() => {
         {id: 5, title: "Typescript", isDone: false},
         {id: 6, title: "RTK query", isDone: false}
     ])
-    let [filter, setFilter] = useState<FilterValuesType>('all')
+
     
 
 //TODO: учебный вариант работы  useState
@@ -23,12 +23,14 @@ export const App=() => {
     // let setTasks = arr[1]
 
 
-
-  const removeTask=(id: number) => {
+  const deleteTask=(id: number) => {
+        // alert(id)
         let filterTasks = tasks.filter( t => t.id !== id)
 setTasks(filterTasks)
     }
 
+
+    const [filter, setFilter] = useState<FilterValuesType>('all')
    const changeFilter=(value: FilterValuesType) => {
         setFilter(value)
    }
@@ -47,15 +49,15 @@ setTasks(filterTasks)
     <div className="App">
         <Todolist title="What to learn"
                   tasks={tasksForTodolist}
-                  removeTask={removeTask}
+                  deleteTask={deleteTask}
                   changeFilter={changeFilter}
                   date={"28.03.2025"}/>
 
         <Todolist title="Books"
                   tasks={[]}
-                  removeTask={removeTask}
+                  deleteTask={deleteTask}
                   changeFilter={changeFilter}
-        date={"28.03.2025"}/>
+                  date={"28.03.2025"}/>
     </div>
   );
 }
