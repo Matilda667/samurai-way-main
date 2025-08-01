@@ -1,8 +1,9 @@
 type PropsType = {
     title: string
-    onClick?: () => void; // Добавляем обработчик клика
+    onClickHandler?: () => void; // Добавляем обработчик клика
+    disabled?:boolean
 }
 
-export const Button = ({ title, onClick }: PropsType) => {
-    return <button onClick={onClick}>{title}</button>;
+export const Button = ({ title, onClickHandler,disabled }: PropsType) => {
+    return <button disabled={disabled} onClick={onClickHandler}>{title}</button>;
 };
